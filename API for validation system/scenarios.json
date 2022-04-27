@@ -1,0 +1,52 @@
+{
+    "trainings": 2,
+    "scenarios": [
+      {
+        "id": 1,
+        "title": "DNS Cache poisoning",
+        "desc": "In this scenario you will get the credentials to the web page of the company via DNS cache poisoning attack.",
+        "progress": 2,
+        "steps": 2,
+        "validations": [
+          {
+            "step": 1,
+            "task": "Hey!\n your task is to look around and find out the authoritative DNS\n Flag is the IP address of authoritative DNS",
+            "type": "flag",
+            "source": "10.20.1.4",
+            "completed": "true"
+          },
+          {
+            "step": 2,
+            "task": "Description to task",
+            "type": "internal command",
+            "source": "grep 'fi' /home/kali/Desktop/test | wc -w",
+            "output": "3",
+            "completed": "true"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "SSH Brute Force",
+        "desc": "BF scenario",
+        "progress": 0,
+        "steps": 2,
+        "validations": [
+          {
+            "step": 1,
+            "task": "Providing some description to task",
+            "type": "none",
+            "source": "none",
+            "completed": "false"
+          },
+          {
+            "step": 2,
+            "task": "Providing some description to next task",
+            "type": "flag",
+            "source": "somerandomflag",
+            "completed": "false"
+          }
+        ]
+      }
+    ]
+  }
