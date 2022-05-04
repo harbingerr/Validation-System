@@ -1,27 +1,41 @@
 {
-    "trainings": 2,
+    "trainings": 3,
     "scenarios": [
       {
         "id": 1,
         "title": "DNS Cache poisoning",
-        "desc": "In this scenario you will get the credentials to the web page of the company via DNS cache poisoning attack.",
-        "progress": 2,
-        "steps": 2,
+        "progress": 0,
+        "dependency": [],
+        "steps": 4,
         "validations": [
           {
             "step": 1,
-            "task": "Hey!\n your task is to look around and find out the authoritative DNS\n Flag is the IP address of authoritative DNS",
+            "task": "Zdravím ťa, pentester!\n Tvoja prvá úloha spočíva v oboznámení sa s infraštruktúrou, pod ktorou budeš pracovať. Práve sa nachádzaš v sieti miestnej kaviarne sídliacej pod bankovou spoločnosťou, ktorá má svoju webovú stránku pre interných no aj pre externých používateľov/klientov. Doménové meno stránky je www.vbankingweb.com. Pokojne sa na ňu môžeš pokúsiť pripojiť.\n Tvojou prvou úlohou je preskúmať a pochopiť sieťovú premávku, cez ktorú tvoj request na stranku putuje. Flag pre túto úlohu je IP adresa autoritativneho DNS servera.",
             "type": "flag",
             "source": "10.20.1.4",
-            "completed": "true"
+            "completed": "false"
           },
           {
             "step": 2,
-            "task": "Description to task",
+            "task": "Výborne! Podarilo sa ti uspesne identifikovat autoritativny DNS server.\n Este pred samotnym utokom by si sa mal pripravit. Vdaka tvojim programatorskym a reverznym zrucnostiam sa ti podarilo vytvorit duplikat prihlasovacej stranky spolocnosti. Tvojou ulohou v tomto kroku je nasadit priravenu stranku na apache server, aby k nemu mohla pristupovat aj tretia strana.\n Ak si myslis, ze si ulohu uspesne zvladol, kliknutim na submit tlacidlo spustis automatizovanu kontrolu.",
             "type": "internal command",
             "source": "grep 'fi' /home/kali/Desktop/test | wc -w",
             "output": "3",
-            "completed": "true"
+            "completed": "false"
+          },
+          {
+            "step": 3,
+            "task": "Ked je uz vsetko pripravene, mozeme prejst na samotny utok. Ten je realizovany pomocou skriptu, ktory najdete v priecinku exploit-script. Do tohoto skriptu je potrebne zadat niekolko vstupnych parametrov. Mali by ste nimi disponovat, no ak nahodou nie, viete ich lahko ziskat.\n Po spusteni skriptu by mali byt vsetky dopyty na stranku spolocnosti presmerovane na vasu stranku. V tomto kroku je teda potrebne odchytit meno a heslo pouzivatela, ktoremu sa falosna stranka spolocnosti objavila.",
+            "type": "flag",
+            "source": "6epT7GHBj",
+            "completed": "false"
+          },
+          {
+            "step": 4,
+            "task": "Dakujem, mozete prejst na dalsi scenar.\n Na dokoncenie potvrdte submit tlacitkom.",
+            "type": "none",
+            "source": "none",
+            "completed": "false"
           }
         ]
       },
@@ -30,20 +44,60 @@
         "title": "SSH Brute Force",
         "desc": "BF scenario",
         "progress": 0,
-        "steps": 2,
+        "dependency": [1],
+        "steps": 3,
         "validations": [
           {
             "step": 1,
-            "task": "Providing some description to task",
-            "type": "none",
-            "source": "none",
+            "task": "Vysledkom predchadzajuceho scenaru by ste mali disponovat novou inormaciou, ktoru mozete pouzit pri pasivnom prieskume. Najdite flag.",
+            "type": "flag",
+            "source": "KgOalY8l06",
             "completed": "false"
           },
           {
             "step": 2,
-            "task": "Providing some description to next task",
+            "task": "Vyborne! Viete tohoto pouzivatela naozaj pingnut?\n Vieme dokonca jeho meno. Vedeli by sme na zaklade toho prist na heslo?",
             "type": "flag",
-            "source": "somerandomflag",
+            "source": "qwerty",
+            "completed": "false"
+          },
+          {
+            "step": 3,
+            "task": "Vyborne :)",
+            "type": "none",
+            "source": "none",
+            "completed": "false"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "DoS on FTP",
+        "desc": "FTP scenario",
+        "dependency": [1,2],
+        "progress": 0,
+        "steps": 3,
+        "validations": [
+          {
+            "step": 1,
+            "task": "Dostali ste sa do internej siete spolocnosti a mozete pristupovat k novym koncovym zariadeniam, ktore cez public siet neboli pristupne.\n V prvej - prieskumnej faze mate za ulohu identifikovat FTP servery a ich verzie a mena sluzieb.\n Existuje pre identifikovanu FTP sluzbu nejaka zranitelnost?",
+            "type": "flag",
+            "source": "CVE-2020-35359",
+            "completed": "false"
+          },
+          {
+            "step": 2,
+            "task": "Spravne ste identifikovali a pomenovali zranitelnost nainstalovanej verzie FTP serveru. Viete tuto zranitelnost zneuzit? \n Ak si myslite, ze ste ulohu uspesne skoncili, kliknite na spustenie automatizovanej validacie.",
+            "type": "internal command",
+            "source": "echo test",
+            "output": "test",
+            "completed": "false"
+          },
+          {
+            "step": 3,
+            "task": "Vyborne :)",
+            "type": "none",
+            "source": "none",
             "completed": "false"
           }
         ]

@@ -1,17 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 28 20:46:08 2020
-
-Zaklady tvorenia API boli ziskane pomocou kurzu na adrese:
-https://www.udemy.com/share/1013i4AEIbdlpWQHwB/
-
-V pripade JWT tokenizacie sme vychadzali s prikladov a dokumentacie ku kniznici flask_jwt_extended:
-https://flask-jwt-extended.readthedocs.io/en/stable/
-
-V tomto subore je vytvorena hlavna aplikacia REST API, je nakonfigurovana JWT tokenizacia 
-a su pridane zdroje(Resources) z externych suborov, ktorym su pridelene trasy, na ktore budeme posielat ziadosti
-
-"""
 
 # import modulov 
 from flask import Flask
