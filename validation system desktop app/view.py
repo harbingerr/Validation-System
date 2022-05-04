@@ -119,6 +119,7 @@ def generateCards2(self, scenario):
     self.lb_complete.setText(QCoreApplication.translate("MainWindow", u"Complete", None))
     self.bt_start.setText(QCoreApplication.translate("MainWindow", u"Start", None))
 
+    ## Activate Start Button
     self.bt_start.clicked.connect(lambda: self.ui.sw_header.setCurrentWidget(self.ui.tasks_header))
     self.bt_start.clicked.connect(lambda: self.ui.sw_lists.setCurrentWidget(self.ui.tasks))
     self.bt_start.clicked.connect(lambda: generateTasks(self, scenario))
@@ -148,11 +149,6 @@ def generateTasks(self,scenario):
   self.ui.bt_previous.clicked.connect(lambda: generateTask(self, scenario, -1))
   self.ui.bt_next.clicked.connect(lambda: generateTask(self, scenario, 1))
   generateTask(self, scenario, 0)
-  #x = 0
-  #for validation in scenario.validations:
-  #  print(vars(validation))
-  #  generateValidation(self,validation,x, scenario)
-  #  x = x + 1
 
 #########################################
 ## Method to disable next/previous button
@@ -290,8 +286,10 @@ def validateSuccess(self, validation, answer, button, label, scenario):
 ## Method to calculate current step
 #########################################
 def calculateCurrent(self,scenario):
+    stepID = 10000000
     for step in scenario.validations:
-        if step.completed == "false":
+        if step.completed == "false" and stepID > step.id:
+            stepID = step.id
             scenario.current = step.id
 
 def disableUI(self):
