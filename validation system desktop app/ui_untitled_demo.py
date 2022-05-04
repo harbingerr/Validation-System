@@ -474,7 +474,7 @@ class Ui_MainWindow(object):
         self.bt_minimize_window.setText("")
         self.bt_close_window.setText("")
         self.lb_redhead_icon.setText("")
-        self.lb_title.setText(QCoreApplication.translate("MainWindow", u"Choose your path", None))
+        self.lb_title.setText(QCoreApplication.translate("MainWindow", u"Choose available scenario", None))
         self.lb_desc.setText(QCoreApplication.translate("MainWindow", u"This learning path covers the core technical skills that will allow you to succeed as a junior penetration tester. Upon completing this path, you will have the practical skills necessary to perform security assessments against virtual network.", None))
         self.bt_back.setText("")
         self.lb_scenario_name_in_task_header.setText(QCoreApplication.translate("MainWindow", u"Scenario XY", None))
