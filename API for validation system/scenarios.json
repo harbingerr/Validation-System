@@ -1,5 +1,5 @@
 {
-    "trainings": 3,
+    "trainings": 4,
     "scenarios": [
       {
         "id": 1,
@@ -75,6 +75,38 @@
         "id": 3,
         "title": "DoS on FTP",
         "desc": "FTP scenario",
+        "dependency": [1,2],
+        "progress": 0,
+        "steps": 3,
+        "validations": [
+          {
+            "step": 1,
+            "task": "Dostali ste sa do internej siete spolocnosti a mozete pristupovat k novym koncovym zariadeniam, ktore cez public siet neboli pristupne.\n V prvej - prieskumnej faze mate za ulohu identifikovat FTP servery a ich verzie a mena sluzieb.\n Existuje pre identifikovanu FTP sluzbu nejaka zranitelnost?",
+            "type": "flag",
+            "source": "CVE-2020-35359",
+            "completed": "false"
+          },
+          {
+            "step": 2,
+            "task": "Spravne ste identifikovali a pomenovali zranitelnost nainstalovanej verzie FTP serveru. Viete tuto zranitelnost zneuzit? \n Ak si myslite, ze ste ulohu uspesne skoncili, kliknite na spustenie automatizovanej validacie.",
+            "type": "internal command",
+            "source": "echo test",
+            "output": "test",
+            "completed": "false"
+          },
+          {
+            "step": 3,
+            "task": "Vyborne :)",
+            "type": "none",
+            "source": "none",
+            "completed": "false"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "SMB Relay",
+        "desc": "SMB scenario",
         "dependency": [1,2],
         "progress": 0,
         "steps": 3,

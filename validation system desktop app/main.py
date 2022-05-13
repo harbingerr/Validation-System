@@ -4,10 +4,12 @@
 from calendar import c
 from functools import cache
 import json
+import string
 import requests
 import sys
 import os
 from turtle import width
+from cryptography.fernet import Fernet
 from PySide2 import *
 from scipy.fftpack import fftfreq
 
@@ -103,6 +105,18 @@ def extractScenarios(initData):
   
   return scenarios
 
+def xor(data, key): 
+    return bytearray(a^b for a, b in zip(data,key)) 
+
+def encryptKey(key):
+  one_time_pad = 'do not reverse me.' 
+  encoded_string = one_time_pad.encode()
+  byte_array = bytearray(encoded_string)
+  ciphertext = xor(key, byte_array)
+  print(ciphertext)
+  decrypted = xor(ciphertext, byte_array)
+  print(decrypted)
+
 #########################################
 ## MAIN CLASS
 #########################################
@@ -111,6 +125,14 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         customUISetup(self)
+        key = Fernet.generate_key()
+        print(type(key))
+        print(key[5])
+        print(key)
+        encryptKey(key)
+        f = Fernet(key)
+        token = f.encrypt(b"my deep dark secret")
+        print(token) 
         response = getInfo(self)
         if response != None:
           #response = requests.get("http://192.168.1.106:4999/attacker")
