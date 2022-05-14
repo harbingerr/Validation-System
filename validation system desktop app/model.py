@@ -11,7 +11,6 @@ import json
 class Scenario():
   id = 0
   title = ""
-  description = ""
   progress = 0
   validations = []
   
@@ -20,26 +19,19 @@ class Scenario():
             sort_keys=True, indent=4)
   
   def calculateProgress(self, progress, steps):
-      print("Progress:" + str(progress))
-      print("steps:" + str(steps))
       if(progress == 0):
         self.progress = 0
       else:
         self.progress = (progress / steps) * 100
-      print("Progress after:" + str(self.progress))
 
-  def __init__(self, title, description, validations, id, progress, steps):  
+  def __init__(self, title, validations, id, progress, steps):  
       self.title = title
-      self.description = description
       self.validations = validations
       self.id = id
-      print("Progress:" + str(progress))
-      print("steps:" + str(steps))
       if(progress == 0):
         self.progress = 0
       else:
         self.progress = (progress / steps) * 100
-      print("Progress after:" + str(self.progress))
       
       self.steps = steps
       self.current = 1 + progress
@@ -52,8 +44,10 @@ class Validation():
   type = ""
   completed = False
 
-  def __init__(self, task, type, completed, stepNumber):  
+  def __init__(self, task, type, completed, stepNumber, hint, score):  
       self.task = task
       self.type = type
       self.completed = completed
       self.id = stepNumber
+      self.hint = hint
+      self.score = score

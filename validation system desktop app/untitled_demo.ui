@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>708</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -346,14 +346,14 @@
             <widget class="QLabel" name="lb_desc">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <pointsize>12</pointsize>
               </font>
              </property>
              <property name="styleSheet">
               <string notr="true">color: rgb(61, 61, 61);</string>
              </property>
              <property name="text">
-              <string>This learning path covers the core technical skills that will allow you to succeed as a junior penetration tester. Upon completing this path, you will have the practical skills necessary to perform security assessments against virtual network.</string>
+              <string>Score: 0</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -397,7 +397,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QFrame" name="">
+            <widget class="QFrame" name="frame">
              <layout class="QVBoxLayout" name="verticalLayout_8">
               <property name="topMargin">
                <number>20</number>
@@ -457,7 +457,7 @@
             </widget>
            </item>
            <item alignment="Qt::AlignRight">
-            <widget class="QLabel" name="label_3">
+            <widget class="QLabel" name="score_task_header">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -471,7 +471,10 @@
               </size>
              </property>
              <property name="text">
-              <string/>
+              <string>Score: 0</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -497,7 +500,7 @@
                 <x>0</x>
                 <y>0</y>
                 <width>778</width>
-                <height>314</height>
+                <height>412</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout">
@@ -760,26 +763,81 @@ border-radius: 25px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="lb_msg_success">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+               <widget class="QFrame" name="frame_6">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
                 </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>40</height>
-                 </size>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true">padding: 10px 10px;
+                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <item>
+                  <widget class="QLabel" name="lb_msg_success">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">padding: 10px 10px;
 color: rgb(7, 226, 87);</string>
-                </property>
-                <property name="text">
-                 <string>Success</string>
-                </property>
+                   </property>
+                   <property name="text">
+                    <string>Success</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_7">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_11">
+                    <item>
+                     <widget class="QPushButton" name="bt_hint">
+                      <property name="minimumSize">
+                       <size>
+                        <width>50</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>50</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">background-color: rgb(22, 30, 45);
+color: rgb(255, 255, 255);
+border-radius: 25px;</string>
+                      </property>
+                      <property name="text">
+                       <string>Hint</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="lb_hint">
+                      <property name="text">
+                       <string>..</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
              </layout>

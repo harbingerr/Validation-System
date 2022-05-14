@@ -95,15 +95,18 @@ def postSomething(self):
 #########################################
 ## Method to extract Scenarios from JSON
 #########################################
-def extractScenarios(initData):
+def extractScenarios(self, initData):
   ## List of scenarios
   scenarios = []
+  self.score = initData["score"]
+  self.ui.lb_desc.setText(QCoreApplication.translate("MainWindow", "Score: " + str(self.score), None))
+  self.ui.score_task_header.setText(QCoreApplication.translate("MainWindow", "Score: " + str(self.score), None))
   for scenario in initData["scenarios"]:
       ## List of validations
       validations = []   
       for validation in scenario["validations"]:
-            validations.append(Validation(validation["task"],validation["type"],validation["completed"],validation["step"]))
-      scenarios.append(Scenario(scenario["title"],scenario["desc"],validations,scenario["id"],scenario["progress"],scenario["steps"]))
+            validations.append(Validation(validation["task"],validation["type"],validation["completed"],validation["step"],validation["hint"],validation["score"]))
+      scenarios.append(Scenario(scenario["title"],validations,scenario["id"],scenario["progress"],scenario["steps"]))
   
   return scenarios
 
@@ -144,7 +147,7 @@ class MainWindow(QMainWindow):
           #print(response.json())
                 
           global extractedData
-          extractedData = extractScenarios(jsResponse)
+          extractedData = extractScenarios(self, jsResponse)
 
           ## Generate cards for scenarios
           generateScenarios(self)

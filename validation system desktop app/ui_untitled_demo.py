@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'untitled_demoqeBero.ui'
+## Form generated from reading UI file 'untitled_demoNbOkNl.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(800, 708)
         MainWindow.setStyleSheet(u"*{\n"
 "	border: none\n"
 "}")
@@ -188,7 +188,7 @@ class Ui_MainWindow(object):
         self.lb_desc = QLabel(self.scenarios_header)
         self.lb_desc.setObjectName(u"lb_desc")
         font1 = QFont()
-        font1.setPointSize(9)
+        font1.setPointSize(12)
         self.lb_desc.setFont(font1)
         self.lb_desc.setStyleSheet(u"color: rgb(61, 61, 61);")
         self.lb_desc.setWordWrap(True)
@@ -252,16 +252,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.frame1)
 
-        self.label_3 = QLabel(self.tasks_header)
-        self.label_3.setObjectName(u"label_3")
+        self.score_task_header = QLabel(self.tasks_header)
+        self.score_task_header.setObjectName(u"score_task_header")
         sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy3)
-        self.label_3.setMinimumSize(QSize(40, 0))
+        sizePolicy3.setHeightForWidth(self.score_task_header.sizePolicy().hasHeightForWidth())
+        self.score_task_header.setSizePolicy(sizePolicy3)
+        self.score_task_header.setMinimumSize(QSize(40, 0))
+        self.score_task_header.setWordWrap(True)
 
-        self.horizontalLayout_6.addWidget(self.label_3, 0, Qt.AlignRight)
+        self.horizontalLayout_6.addWidget(self.score_task_header, 0, Qt.AlignRight)
 
         self.sw_header.addWidget(self.tasks_header)
 
@@ -278,7 +279,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 778, 314))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 778, 412))
         self.gridLayout = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout.setObjectName(u"gridLayout")
         self.card = QFrame(self.scrollAreaWidgetContents)
@@ -419,7 +420,13 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.task_submition_frame)
 
-        self.lb_msg_success = QLabel(self.task_body_frame)
+        self.frame_6 = QFrame(self.task_body_frame)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.frame_6)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.lb_msg_success = QLabel(self.frame_6)
         self.lb_msg_success.setObjectName(u"lb_msg_success")
         sizePolicy3.setHeightForWidth(self.lb_msg_success.sizePolicy().hasHeightForWidth())
         self.lb_msg_success.setSizePolicy(sizePolicy3)
@@ -427,7 +434,35 @@ class Ui_MainWindow(object):
         self.lb_msg_success.setStyleSheet(u"padding: 10px 10px;\n"
 "color: rgb(7, 226, 87);")
 
-        self.verticalLayout_6.addWidget(self.lb_msg_success)
+        self.horizontalLayout_10.addWidget(self.lb_msg_success)
+
+        self.frame_7 = QFrame(self.frame_6)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setFrameShape(QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_7)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.bt_hint = QPushButton(self.frame_7)
+        self.bt_hint.setObjectName(u"bt_hint")
+        self.bt_hint.setMinimumSize(QSize(50, 30))
+        self.bt_hint.setMaximumSize(QSize(50, 16777215))
+        self.bt_hint.setCursor(QCursor(Qt.PointingHandCursor))
+        self.bt_hint.setStyleSheet(u"background-color: rgb(22, 30, 45);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 25px;")
+
+        self.horizontalLayout_11.addWidget(self.bt_hint)
+
+        self.lb_hint = QLabel(self.frame_7)
+        self.lb_hint.setObjectName(u"lb_hint")
+
+        self.horizontalLayout_11.addWidget(self.lb_hint)
+
+
+        self.horizontalLayout_10.addWidget(self.frame_7)
+
+
+        self.verticalLayout_6.addWidget(self.frame_6)
 
 
         self.verticalLayout_5.addWidget(self.task_body_frame)
@@ -474,13 +509,13 @@ class Ui_MainWindow(object):
         self.bt_minimize_window.setText("")
         self.bt_close_window.setText("")
         self.lb_redhead_icon.setText("")
-        self.lb_title.setText(QCoreApplication.translate("MainWindow", u"Choose available scenario", None))
+        self.lb_title.setText(QCoreApplication.translate("MainWindow", u"Choose your path", None))
         self.lb_desc.setText(QCoreApplication.translate("MainWindow", u"Score: 0", None))
         self.bt_back.setText("")
         self.lb_scenario_name_in_task_header.setText(QCoreApplication.translate("MainWindow", u"Scenario XY", None))
         self.label_2.setText("")
         self.lb_validation_step_in_task_header.setText(QCoreApplication.translate("MainWindow", u"Task XY", None))
-        self.label_3.setText("")
+        self.score_task_header.setText(QCoreApplication.translate("MainWindow", u"Score: 0", None))
         self.bt_previous.setText("")
         self.lb_previous_step.setText(QCoreApplication.translate("MainWindow", u"Previous step", None))
         self.lb_next_step.setText(QCoreApplication.translate("MainWindow", u"Next step", None))
@@ -489,6 +524,8 @@ class Ui_MainWindow(object):
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Answer the question", None))
         self.bt_submit.setText(QCoreApplication.translate("MainWindow", u"Completed", None))
         self.lb_msg_success.setText(QCoreApplication.translate("MainWindow", u"Success", None))
+        self.bt_hint.setText(QCoreApplication.translate("MainWindow", u"Hint", None))
+        self.lb_hint.setText(QCoreApplication.translate("MainWindow", u"..", None))
         self.lb_cp.setText(QCoreApplication.translate("MainWindow", u"\u00a9 2022", None))
     # retranslateUi
 

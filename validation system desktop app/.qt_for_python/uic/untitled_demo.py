@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(800, 708)
         MainWindow.setStyleSheet(u"*{\n"
 "	border: none\n"
 "}")
@@ -188,7 +188,7 @@ class Ui_MainWindow(object):
         self.lb_desc = QLabel(self.scenarios_header)
         self.lb_desc.setObjectName(u"lb_desc")
         font1 = QFont()
-        font1.setPointSize(9)
+        font1.setPointSize(12)
         self.lb_desc.setFont(font1)
         self.lb_desc.setStyleSheet(u"color: rgb(61, 61, 61);")
         self.lb_desc.setWordWrap(True)
@@ -212,10 +212,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.bt_back)
 
-        self.verticalLayout_8 = QVBoxLayout()
+        self.frame1 = QFrame(self.tasks_header)
+        self.frame1.setObjectName(u"frame1")
+        self.verticalLayout_8 = QVBoxLayout(self.frame1)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(-1, 20, -1, -1)
-        self.lb_scenario_name_in_task_header = QLabel(self.tasks_header)
+        self.lb_scenario_name_in_task_header = QLabel(self.frame1)
         self.lb_scenario_name_in_task_header.setObjectName(u"lb_scenario_name_in_task_header")
         font2 = QFont()
         font2.setPointSize(11)
@@ -224,24 +226,43 @@ class Ui_MainWindow(object):
         self.lb_scenario_name_in_task_header.setFont(font2)
         self.lb_scenario_name_in_task_header.setMargin(9)
 
-        self.verticalLayout_8.addWidget(self.lb_scenario_name_in_task_header)
+        self.verticalLayout_8.addWidget(self.lb_scenario_name_in_task_header, 0, Qt.AlignHCenter)
 
-        self.lb_validation_spet_in_task_header = QLabel(self.tasks_header)
-        self.lb_validation_spet_in_task_header.setObjectName(u"lb_validation_spet_in_task_header")
+        self.label_2 = QLabel(self.frame1)
+        self.label_2.setObjectName(u"label_2")
         sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.lb_validation_spet_in_task_header.sizePolicy().hasHeightForWidth())
-        self.lb_validation_spet_in_task_header.setSizePolicy(sizePolicy2)
+        sizePolicy2.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy2)
+
+        self.verticalLayout_8.addWidget(self.label_2)
+
+        self.lb_validation_step_in_task_header = QLabel(self.frame1)
+        self.lb_validation_step_in_task_header.setObjectName(u"lb_validation_step_in_task_header")
+        sizePolicy2.setHeightForWidth(self.lb_validation_step_in_task_header.sizePolicy().hasHeightForWidth())
+        self.lb_validation_step_in_task_header.setSizePolicy(sizePolicy2)
         font3 = QFont()
         font3.setPointSize(10)
-        self.lb_validation_spet_in_task_header.setFont(font3)
-        self.lb_validation_spet_in_task_header.setMargin(10)
+        self.lb_validation_step_in_task_header.setFont(font3)
+        self.lb_validation_step_in_task_header.setMargin(10)
 
-        self.verticalLayout_8.addWidget(self.lb_validation_spet_in_task_header)
+        self.verticalLayout_8.addWidget(self.lb_validation_step_in_task_header, 0, Qt.AlignHCenter)
 
 
-        self.horizontalLayout_6.addLayout(self.verticalLayout_8)
+        self.horizontalLayout_6.addWidget(self.frame1)
+
+        self.score_task_header = QLabel(self.tasks_header)
+        self.score_task_header.setObjectName(u"score_task_header")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.score_task_header.sizePolicy().hasHeightForWidth())
+        self.score_task_header.setSizePolicy(sizePolicy3)
+        self.score_task_header.setMinimumSize(QSize(40, 0))
+        self.score_task_header.setWordWrap(True)
+
+        self.horizontalLayout_6.addWidget(self.score_task_header, 0, Qt.AlignRight)
 
         self.sw_header.addWidget(self.tasks_header)
 
@@ -258,7 +279,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 778, 335))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 778, 412))
         self.gridLayout = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout.setObjectName(u"gridLayout")
         self.card = QFrame(self.scrollAreaWidgetContents)
@@ -277,61 +298,177 @@ class Ui_MainWindow(object):
         self.tasks.setObjectName(u"tasks")
         self.verticalLayout_5 = QVBoxLayout(self.tasks)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.horizontalLayout_7 = QHBoxLayout()
+        self.step_header_frame = QFrame(self.tasks)
+        self.step_header_frame.setObjectName(u"step_header_frame")
+        self.horizontalLayout_7 = QHBoxLayout(self.step_header_frame)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_8 = QHBoxLayout()
+        self.previous_step_frame = QFrame(self.step_header_frame)
+        self.previous_step_frame.setObjectName(u"previous_step_frame")
+        self.previous_step_frame.setCursor(QCursor(Qt.ArrowCursor))
+        self.previous_step_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_8 = QHBoxLayout(self.previous_step_frame)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.pushButton_2 = QPushButton(self.tasks)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMinimumSize(QSize(50, 0))
-        self.pushButton_2.setMaximumSize(QSize(50, 16777215))
-        self.pushButton_2.setIcon(icon2)
+        self.horizontalLayout_8.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.horizontalLayout_8.setContentsMargins(0, 5, 100, 10)
+        self.bt_previous = QPushButton(self.previous_step_frame)
+        self.bt_previous.setObjectName(u"bt_previous")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.bt_previous.sizePolicy().hasHeightForWidth())
+        self.bt_previous.setSizePolicy(sizePolicy4)
+        self.bt_previous.setMinimumSize(QSize(50, 0))
+        self.bt_previous.setMaximumSize(QSize(50, 16777215))
+        self.bt_previous.setCursor(QCursor(Qt.PointingHandCursor))
+        self.bt_previous.setStyleSheet(u"")
+        self.bt_previous.setIcon(icon2)
+        self.bt_previous.setIconSize(QSize(30, 30))
 
-        self.horizontalLayout_8.addWidget(self.pushButton_2, 0, Qt.AlignLeft)
+        self.horizontalLayout_8.addWidget(self.bt_previous, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.label = QLabel(self.tasks)
-        self.label.setObjectName(u"label")
+        self.lb_previous_step = QLabel(self.previous_step_frame)
+        self.lb_previous_step.setObjectName(u"lb_previous_step")
         font4 = QFont()
         font4.setPointSize(9)
         font4.setBold(False)
         font4.setWeight(50)
-        self.label.setFont(font4)
+        self.lb_previous_step.setFont(font4)
 
-        self.horizontalLayout_8.addWidget(self.label, 0, Qt.AlignLeft)
+        self.horizontalLayout_8.addWidget(self.lb_previous_step, 0, Qt.AlignLeft|Qt.AlignVCenter)
 
 
-        self.horizontalLayout_7.addLayout(self.horizontalLayout_8)
+        self.horizontalLayout_7.addWidget(self.previous_step_frame)
 
-        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer)
+
+        self.next_step_frame = QFrame(self.step_header_frame)
+        self.next_step_frame.setObjectName(u"next_step_frame")
+        self.horizontalLayout_9 = QHBoxLayout(self.next_step_frame)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.label_2 = QLabel(self.tasks)
-        self.label_2.setObjectName(u"label_2")
+        self.horizontalLayout_9.setContentsMargins(100, 5, -1, 10)
+        self.lb_next_step = QLabel(self.next_step_frame)
+        self.lb_next_step.setObjectName(u"lb_next_step")
         font5 = QFont()
         font5.setPointSize(9)
         font5.setItalic(False)
-        self.label_2.setFont(font5)
+        self.lb_next_step.setFont(font5)
 
-        self.horizontalLayout_9.addWidget(self.label_2, 0, Qt.AlignRight)
+        self.horizontalLayout_9.addWidget(self.lb_next_step, 0, Qt.AlignRight|Qt.AlignVCenter)
 
-        self.pushButton = QPushButton(self.tasks)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(50, 0))
-        self.pushButton.setMaximumSize(QSize(50, 16777215))
+        self.bt_next = QPushButton(self.next_step_frame)
+        self.bt_next.setObjectName(u"bt_next")
+        self.bt_next.setMinimumSize(QSize(50, 0))
+        self.bt_next.setMaximumSize(QSize(50, 16777215))
+        self.bt_next.setCursor(QCursor(Qt.PointingHandCursor))
         icon3 = QIcon()
         icon3.addFile(u"icons/icons8-forward64 .png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon3)
+        self.bt_next.setIcon(icon3)
+        self.bt_next.setIconSize(QSize(30, 30))
 
-        self.horizontalLayout_9.addWidget(self.pushButton, 0, Qt.AlignRight)
-
-
-        self.horizontalLayout_7.addLayout(self.horizontalLayout_9)
+        self.horizontalLayout_9.addWidget(self.bt_next, 0, Qt.AlignRight|Qt.AlignVCenter)
 
 
-        self.verticalLayout_5.addLayout(self.horizontalLayout_7)
+        self.horizontalLayout_7.addWidget(self.next_step_frame)
+
+
+        self.verticalLayout_5.addWidget(self.step_header_frame)
+
+        self.task_body_frame = QFrame(self.tasks)
+        self.task_body_frame.setObjectName(u"task_body_frame")
+        self.verticalLayout_6 = QVBoxLayout(self.task_body_frame)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.lb_description = QLabel(self.task_body_frame)
+        self.lb_description.setObjectName(u"lb_description")
+        sizePolicy4.setHeightForWidth(self.lb_description.sizePolicy().hasHeightForWidth())
+        self.lb_description.setSizePolicy(sizePolicy4)
+        self.lb_description.setMinimumSize(QSize(0, 200))
+        self.lb_description.setWordWrap(True)
+
+        self.verticalLayout_6.addWidget(self.lb_description, 0, Qt.AlignHCenter|Qt.AlignTop)
+
+        self.task_submition_frame = QFrame(self.task_body_frame)
+        self.task_submition_frame.setObjectName(u"task_submition_frame")
+        self.horizontalLayout_13 = QHBoxLayout(self.task_submition_frame)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.lineEdit = QLineEdit(self.task_submition_frame)
+        self.lineEdit.setObjectName(u"lineEdit")
+        self.lineEdit.setMinimumSize(QSize(0, 40))
+        self.lineEdit.setStyleSheet(u"padding: 0px 10px;\n"
+"background-color: rgb(211, 211, 211);")
+
+        self.horizontalLayout_13.addWidget(self.lineEdit)
+
+        self.bt_submit = QPushButton(self.task_submition_frame)
+        self.bt_submit.setObjectName(u"bt_submit")
+        self.bt_submit.setMinimumSize(QSize(0, 40))
+        font6 = QFont()
+        font6.setBold(True)
+        font6.setWeight(75)
+        self.bt_submit.setFont(font6)
+        self.bt_submit.setCursor(QCursor(Qt.PointingHandCursor))
+        self.bt_submit.setStyleSheet(u"background-color: rgb(22, 30, 45);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 25px;")
+        icon4 = QIcon()
+        icon4.addFile(u"icons/white/icons8-play-button-circled-24.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_submit.setIcon(icon4)
+
+        self.horizontalLayout_13.addWidget(self.bt_submit)
+
+
+        self.verticalLayout_6.addWidget(self.task_submition_frame)
+
+        self.frame_6 = QFrame(self.task_body_frame)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.frame_6)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.lb_msg_success = QLabel(self.frame_6)
+        self.lb_msg_success.setObjectName(u"lb_msg_success")
+        sizePolicy3.setHeightForWidth(self.lb_msg_success.sizePolicy().hasHeightForWidth())
+        self.lb_msg_success.setSizePolicy(sizePolicy3)
+        self.lb_msg_success.setMinimumSize(QSize(0, 40))
+        self.lb_msg_success.setStyleSheet(u"padding: 10px 10px;\n"
+"color: rgb(7, 226, 87);")
+
+        self.horizontalLayout_10.addWidget(self.lb_msg_success)
+
+        self.frame_7 = QFrame(self.frame_6)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setFrameShape(QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_7)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.bt_hint = QPushButton(self.frame_7)
+        self.bt_hint.setObjectName(u"bt_hint")
+        self.bt_hint.setMinimumSize(QSize(50, 30))
+        self.bt_hint.setMaximumSize(QSize(50, 16777215))
+        self.bt_hint.setStyleSheet(u"background-color: rgb(22, 30, 45);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 25px;")
+
+        self.horizontalLayout_11.addWidget(self.bt_hint)
+
+        self.lb_hint = QLabel(self.frame_7)
+        self.lb_hint.setObjectName(u"lb_hint")
+
+        self.horizontalLayout_11.addWidget(self.lb_hint)
+
+
+        self.horizontalLayout_10.addWidget(self.frame_7)
+
+
+        self.verticalLayout_6.addWidget(self.frame_6)
+
+
+        self.verticalLayout_5.addWidget(self.task_body_frame)
 
         self.sw_lists.addWidget(self.tasks)
 
-        self.verticalLayout_2.addWidget(self.sw_lists, 0, Qt.AlignTop)
+        self.verticalLayout_2.addWidget(self.sw_lists)
 
 
         self.verticalLayout.addWidget(self.main)
@@ -344,9 +481,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.lb_cp = QLabel(self.footer)
         self.lb_cp.setObjectName(u"lb_cp")
-        font6 = QFont()
-        font6.setPointSize(8)
-        self.lb_cp.setFont(font6)
+        font7 = QFont()
+        font7.setPointSize(8)
+        self.lb_cp.setFont(font7)
 
         self.horizontalLayout_4.addWidget(self.lb_cp, 0, Qt.AlignTop)
 
@@ -356,6 +493,10 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+
+        self.sw_header.setCurrentIndex(0)
+        self.sw_lists.setCurrentIndex(0)
+
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
@@ -368,14 +509,22 @@ class Ui_MainWindow(object):
         self.bt_close_window.setText("")
         self.lb_redhead_icon.setText("")
         self.lb_title.setText(QCoreApplication.translate("MainWindow", u"Choose your path", None))
-        self.lb_desc.setText(QCoreApplication.translate("MainWindow", u"This learning path covers the core technical skills that will allow you to succeed as a junior penetration tester. Upon completing this path, you will have the practical skills necessary to perform security assessments against virtual network.", None))
+        self.lb_desc.setText(QCoreApplication.translate("MainWindow", u"Score: 0", None))
         self.bt_back.setText("")
         self.lb_scenario_name_in_task_header.setText(QCoreApplication.translate("MainWindow", u"Scenario XY", None))
-        self.lb_validation_spet_in_task_header.setText(QCoreApplication.translate("MainWindow", u"Task XY", None))
-        self.pushButton_2.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Previous step", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Next step", None))
-        self.pushButton.setText("")
+        self.label_2.setText("")
+        self.lb_validation_step_in_task_header.setText(QCoreApplication.translate("MainWindow", u"Task XY", None))
+        self.score_task_header.setText(QCoreApplication.translate("MainWindow", u"Score: 0", None))
+        self.bt_previous.setText("")
+        self.lb_previous_step.setText(QCoreApplication.translate("MainWindow", u"Previous step", None))
+        self.lb_next_step.setText(QCoreApplication.translate("MainWindow", u"Next step", None))
+        self.bt_next.setText("")
+        self.lb_description.setText(QCoreApplication.translate("MainWindow", u"Task Description", None))
+        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Answer the question", None))
+        self.bt_submit.setText(QCoreApplication.translate("MainWindow", u"Completed", None))
+        self.lb_msg_success.setText(QCoreApplication.translate("MainWindow", u"Success", None))
+        self.bt_hint.setText(QCoreApplication.translate("MainWindow", u"Hint", None))
+        self.lb_hint.setText(QCoreApplication.translate("MainWindow", u"..", None))
         self.lb_cp.setText(QCoreApplication.translate("MainWindow", u"\u00a9 2022", None))
     # retranslateUi
 

@@ -139,6 +139,9 @@ def generateTasks(self,scenario):
   ## Set title
   self.ui.lb_scenario_name_in_task_header.setText(QCoreApplication.translate("MainWindow", scenario.title, None))
   
+  validationID = scenario.current - 1
+  self.ui.bt_hint.clicked.connect(lambda: showHint(self, scenario.validations[validationID]))
+  
   ##BODY
   ## Init Previous/Next step buttons and set labels (hide sucess label + update description)
   # Disable previous button on first step and next button on last step
@@ -201,6 +204,7 @@ def generateTask(self, scenario, bt_clicked):
     
     self.ui.lb_description.setText(QCoreApplication.translate("MainWindow", task_to_generate.task, None))
     self.ui.lb_msg_success.setText(QCoreApplication.translate("MainWindow", "", None))
+    self.ui.lb_hint.setText(QCoreApplication.translate("MainWindow", "", None))
     self.ui.lineEdit.setText(QCoreApplication.translate("MainWindow", "", None))
     
     if(task_to_generate.type == 'flag'):
@@ -262,10 +266,10 @@ def validate(self, validation, listOfObjects, scenario):
             result = runControllScript(self, api_answer['answer'], scenario.id, validation.id)
             print("Result from API: " + result)
             if result == 'True' :
-            	validateSuccess(self, validation, answer, button, label, scenario)
+                validateSuccess(self, validation, answer, button, label, scenario)
             elif result == 'False' :
-            	label.setText(QCoreApplication.translate("MainWindow", u"Wrong!", None))
-            	label.setStyleSheet(u"color: rgb(255, 21, 21);")
+                label.setText(QCoreApplication.translate("MainWindow", u"Wrong!", None))
+                label.setStyleSheet(u"color: rgb(255, 21, 21);")
  
 def validateSuccess(self, validation, answer, button, label, scenario):
     # update components
@@ -279,6 +283,7 @@ def validateSuccess(self, validation, answer, button, label, scenario):
     #validation.completed = "true"
     scenario.calculateProgress(scenario.current, scenario.steps)
     updateProgressBar(self, scenario)
+    updateScore(self, validation.score)
 
     disableUI(self)
     
@@ -303,7 +308,18 @@ def enableUI(self):
     #lock button and input field
     self.ui.bt_submit.setEnabled(True)
     self.ui.lineEdit.setReadOnly(False)
-    
+    self.ui.bt_submit.setStyleSheet(u"background-color: rgb(22, 30, 45);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 25px;")
+
+def updateScore(self,score):
+    self.score = self.score + score
+    self.ui.lb_desc.setText(QCoreApplication.translate("MainWindow", "Score: " + str(self.score), None))
+    self.ui.score_task_header.setText(QCoreApplication.translate("MainWindow", "Score: " + str(self.score), None))
+
+def showHint(self,validation):
+    hint = validation.hint
+    self.ui.lb_hint.setText(QCoreApplication.translate("MainWindow", hint, None))
     
 def updateProgressBar(self, scenario):
     #currently dummy solution

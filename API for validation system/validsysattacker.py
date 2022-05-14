@@ -56,16 +56,9 @@ class SystemInit(Resource):
 
         origokey = str.encode(key)
         s = json.dumps(data)
-        print(s)
-        print(type(s))
         res = s.encode('utf-8')
-        print(type(res))
-        print(res)
-        print(type(origokey))
-        print(origokey)
         f = Fernet(key)
         token = f.encrypt(res)
-        print(token)
         toReturn =  { "data":""}
         toReturn['data'] = token.decode("utf-8")
 
@@ -119,6 +112,7 @@ class FlagValidation2(Resource):
                             changingJson = True
                             print("Im HERE")
                             validation["completed"] = 'true'
+                            data["score"] = data["score"] + validation["score"]
                             scenario["progress"] = scenario["progress"] + 1
                             valid = 'True'
                             
