@@ -4,20 +4,21 @@
       {
         "id": 1,
         "title": "DNS Cache poisoning",
+        "desc": "In this scenario you will get the credentials to the web page of the company via DNS cache poisoning attack.",
         "progress": 0,
         "dependency": [],
         "steps": 4,
         "validations": [
           {
             "step": 1,
-            "task": "Zdravím ťa, pentester!\n Tvoja prvá úloha spočíva v oboznámení sa s infraštruktúrou, pod ktorou budeš pracovať. Práve sa nachádzaš v sieti miestnej kaviarne sídliacej pod bankovou spoločnosťou, ktorá má svoju webovú stránku pre interných no aj pre externých používateľov/klientov. Doménové meno stránky je www.vbankingweb.com. Pokojne sa na ňu môžeš pokúsiť pripojiť.\n Tvojou prvou úlohou je preskúmať a pochopiť sieťovú premávku, cez ktorú tvoj request na stranku putuje. Flag pre túto úlohu je IP adresa autoritativneho DNS servera.",
+            "task": "Zdravim ta, pentester!\n Tvoja prva uloha spociva v oboznameni sa s infrastrukturou, pod ktorou budes pracovat. Nachadzas sa v miestnej kaviarni pod bankovou spolocnostou, ktora ma svoju webovu stranku pre internych no aj pre externych pouzivatelov/klientov. Domenove meno stranky je www.vbankingweb.com.\n Tvojou ulohou je preskumat a pochopit sietovu premavku, cez ktoru tvoj request na stranke putuje. Flag pre tuto ulohu je adresa autoritativneho DNS servera.",
             "type": "flag",
             "source": "10.20.1.4",
             "completed": "false"
           },
           {
             "step": 2,
-            "task": "Výborne! Podarilo sa ti uspesne identifikovat autoritativny DNS server.\n Este pred samotnym utokom by si sa mal pripravit. Vdaka tvojim programatorskym a reverznym zrucnostiam sa ti podarilo vytvorit duplikat prihlasovacej stranky spolocnosti. Tvojou ulohou v tomto kroku je nasadit priravenu stranku na apache server, aby k nemu mohla pristupovat aj tretia strana.\n Ak si myslis, ze si ulohu uspesne zvladol, kliknutim na submit tlacidlo spustis automatizovanu kontrolu.",
+            "task": "Vyborne! Podarilo sa ti uspesne identifikovat autoritativny DNS server.\n Este pred samotnym utokom by si sa mal pripravit. Vdaka tvojim programatorskym a reverznym zrucnostiam sa ti podarilo vytvorit duplikat prihlasovacej stranky spolocnosti. Tvojou ulohou v tomto kroku je nasadit priravenu stranku na apache server, aby k nemu mohla pristupovat aj tretia strana.\n Ak si myslis, ze si ulohu uspesne zvladol, kliknutim na submit tlacidlo spustis automatizovanu kontrolu.",
             "type": "internal command",
             "source": "grep 'fi' /home/kali/Desktop/test | wc -w",
             "output": "3",
