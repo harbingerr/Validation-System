@@ -253,9 +253,9 @@ def validate(self, validation, listOfObjects, scenario):
     label = listOfObjects[2]
     
     response = getFlagcheck(self,scenario.id,validation.id,answer.text())
-    print(response.status_code)
     if(response.status_code == 200):
-        api_answer = response.json()
+        jsonResponse = decryptResponse(self,response.json())
+        api_answer = json.loads(jsonResponse)
         if api_answer['answer'] == 'True' :
             validateSuccess(self, validation, answer, button, label, scenario)
         elif api_answer['answer'] == 'False' :

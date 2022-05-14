@@ -38,7 +38,8 @@ def runControllScript(self, script, scenarioId, validationId):
     print(output)
     finalResult = sendOutput(self,str(output), scenarioId, validationId)
     if(finalResult.status_code == 200):
-        api_answer = finalResult.json()
+        jsonResponse = decryptResponse(self,finalResult.json())
+        api_answer = json.loads(jsonResponse)
         return api_answer['answer']
   else:
     print('You are running this system on windows machine')
@@ -49,7 +50,7 @@ def runControllScript(self, script, scenarioId, validationId):
 ## Method to check output from script
 #########################################
 def sendOutput(self, output, scenarioId, validationId):    
-  query = {'scenario':scenarioId, 'validation':validationId, 'output':output}    
+  query = {'scenario':scenarioId, 'validation':validationId, 'output':output}
   return requests.get(API_SOURCE+API_ENDPOINT_INIT+'/'+API_ENDPOINT_VALIDATE2, params=query)
 
 #########################################
@@ -83,7 +84,7 @@ def getInfo(self,key):
 #########################################
 def getFlagcheck(self, scenarioId, validationId, answer):    
   query = {'scenario':scenarioId, 'validation':validationId, 'flag':answer} 
-  headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}   
+  headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
   return requests.get(API_SOURCE+API_ENDPOINT_INIT+'/'+API_ENDPOINT_VALIDATE, params=query, headers=headers)
 
 #########################################
@@ -110,12 +111,14 @@ def extractScenarios(self, initData):
   
   return scenarios
 
-def decryptResponse(response): 
-    json = response.json()
-    data = json["data"]
+def decryptResponse(self,response): 
+    data = response["data"]
     byteResponse = data.encode("utf-8")
     print(byteResponse)
-    return byteResponse
+    f = Fernet(self.key)
+    decriptedResponse = f.decrypt(byteResponse)
+    jsonResponse = decriptedResponse.decode("utf-8")
+    return jsonResponse
 
 
 #########################################
@@ -130,17 +133,13 @@ class MainWindow(QMainWindow):
         f = Fernet(key)
         print(type(key))
         print(key)
+        self.key = key
 
         response = getInfo(self,key)
         print(response)
         if response != None:
-          realResponse = decryptResponse(response)
-          decriptedResponse = f.decrypt(realResponse)
-
           #decriptedResponse = f.decrypt(byteResponse)
-          print('Response: ')
-          print(decriptedResponse)
-          jsonResponse = decriptedResponse.decode("utf-8")
+          jsonResponse = decryptResponse(self,response.json())
           jsResponse = json.loads(jsonResponse)
           print(type(jsonResponse))
           #response = requests.get("http://192.168.1.106:4999/attacker")

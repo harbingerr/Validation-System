@@ -61,6 +61,15 @@ class SystemInit(Resource):
         token = f.encrypt(res)
         toReturn =  { "data":""}
         toReturn['data'] = token.decode("utf-8")
+        
+        try:
+            with open('key.key', 'w') as fl:
+                fl.write(key)
+            # Do something with the file
+        except IOError:
+            print("File not accessible")
+        finally:
+            fl.close()
 
         return(toReturn)
 
@@ -100,6 +109,15 @@ class FlagValidation2(Resource):
         finally:
             f.close()
         
+        try:
+            with open('key.key', 'r') as fl:
+                key = fl.read()
+            # Do something with the file
+        except IOError:
+            print("File not accessible")
+        finally:
+            fl.close()
+        
         valid = 'False'
         changingJson = False
 
@@ -127,7 +145,15 @@ class FlagValidation2(Resource):
         
         toReturn = {'answer':valid} 
         
-        return(toReturn)
+        print(key)
+        s = json.dumps(toReturn)
+        res = s.encode('utf-8')
+        f = Fernet(key)
+        token = f.encrypt(res)
+        toReturnenc =  { "data":""}
+        toReturnenc['data'] = token.decode("utf-8")
+        
+        return(toReturnenc)
 
 class FlagValidation(Resource):
     parser = reqparse.RequestParser()
@@ -166,6 +192,15 @@ class FlagValidation(Resource):
             print("File not accessible")
         finally:
             f.close()
+
+        try:
+            with open('key.key', 'r') as fl:
+                key = fl.read()
+            # Do something with the file
+        except IOError:
+            print("File not accessible")
+        finally:
+            fl.close()
         
         valid = 'False'
         changingJson = False
@@ -199,4 +234,12 @@ class FlagValidation(Resource):
         
         toReturn = {'answer':valid} 
         
-        return(toReturn)
+        print(key)
+        s = json.dumps(toReturn)
+        res = s.encode('utf-8')
+        f = Fernet(key)
+        token = f.encrypt(res)
+        toReturnenc =  { "data":""}
+        toReturnenc['data'] = token.decode("utf-8")
+        
+        return(toReturnenc)
