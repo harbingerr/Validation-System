@@ -62,9 +62,10 @@ def generateScenarios(self):
 #########################################
 ## Method to get init informations from API
 #########################################
-def getInfo(self):
+def getInfo(self,key):
   try:
-    r = requests.get(API_SOURCE+API_ENDPOINT_INIT)
+    query = {'getscenarios':key} 
+    r = requests.get(API_SOURCE+API_ENDPOINT_INIT, params=query)
     return r
   except requests.exceptions.RequestException as err:
     print ("OOps: Something Else",err)
@@ -81,8 +82,9 @@ def getInfo(self):
 ## Method to check flag
 #########################################
 def getFlagcheck(self, scenarioId, validationId, answer):    
-  query = {'scenario':scenarioId, 'validation':validationId, 'flag':answer}    
-  return requests.get(API_SOURCE+API_ENDPOINT_INIT+'/'+API_ENDPOINT_VALIDATE, params=query)
+  query = {'scenario':scenarioId, 'validation':validationId, 'flag':answer} 
+  headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}   
+  return requests.get(API_SOURCE+API_ENDPOINT_INIT+'/'+API_ENDPOINT_VALIDATE, params=query, headers=headers)
 
 #########################################
 ## Method to get init informations from API
@@ -105,17 +107,13 @@ def extractScenarios(initData):
   
   return scenarios
 
-def xor(data, key): 
-    return bytearray(a^b for a, b in zip(data,key)) 
+def decryptResponse(response): 
+    json = response.json()
+    data = json["data"]
+    byteResponse = data.encode("utf-8")
+    print(byteResponse)
+    return byteResponse
 
-def encryptKey(key):
-  one_time_pad = 'do not reverse me.' 
-  encoded_string = one_time_pad.encode()
-  byte_array = bytearray(encoded_string)
-  ciphertext = xor(key, byte_array)
-  print(ciphertext)
-  decrypted = xor(ciphertext, byte_array)
-  print(decrypted)
 
 #########################################
 ## MAIN CLASS
@@ -126,20 +124,27 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         customUISetup(self)
         key = Fernet.generate_key()
-        print(type(key))
-        print(key[5])
-        print(key)
-        encryptKey(key)
         f = Fernet(key)
-        token = f.encrypt(b"my deep dark secret")
-        print(token) 
-        response = getInfo(self)
+        print(type(key))
+        print(key)
+
+        response = getInfo(self,key)
+        print(response)
         if response != None:
+          realResponse = decryptResponse(response)
+          decriptedResponse = f.decrypt(realResponse)
+
+          #decriptedResponse = f.decrypt(byteResponse)
+          print('Response: ')
+          print(decriptedResponse)
+          jsonResponse = decriptedResponse.decode("utf-8")
+          jsResponse = json.loads(jsonResponse)
+          print(type(jsonResponse))
           #response = requests.get("http://192.168.1.106:4999/attacker")
-          print(response.json())
+          #print(response.json())
                 
           global extractedData
-          extractedData = extractScenarios(response.json())
+          extractedData = extractScenarios(jsResponse)
 
           ## Generate cards for scenarios
           generateScenarios(self)
@@ -155,8 +160,6 @@ class MainWindow(QMainWindow):
   
   def mousePressEvent(self, event):
         self.clickPosition = event.globalPos()
-        
-
         
 
 #########################################
