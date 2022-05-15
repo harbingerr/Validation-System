@@ -54,18 +54,10 @@ class SystemInit(Resource):
             for validation in scenario["validations"]:
                 validation.pop("source")
 
-        origokey = str.encode(key)
         s = json.dumps(data)
-        print(s)
-        print(type(s))
         res = s.encode('utf-8')
-        print(type(res))
-        print(res)
-        print(type(origokey))
-        print(origokey)
         f = Fernet(key)
         token = f.encrypt(res)
-        print(token)
         toReturn =  { "data":""}
         toReturn['data'] = token.decode("utf-8")
 
