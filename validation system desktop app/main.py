@@ -1,14 +1,11 @@
 #########################################
 ## LIB IMPORTS
 #########################################
-from calendar import c
-from functools import cache
 import json
 import requests
 import sys
 import os
 from cryptography.fernet import Fernet
-from scipy.fftpack import fftfreq
 
 #########################################
 ## FILE IMPORTS

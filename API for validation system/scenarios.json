@@ -21,8 +21,8 @@
           "step": 2,
           "task": "Great! You were able to successfully identify the authoritative DNS server. \n You should be prepared before the attack itself. Thankts to your programming and reverse skills (ctrl+u :)) you have been able to create a duplication of the original login page. Your task in this step is to deploy the associated page to the apache server so that a third party can access it.\n If you think you that you have successfully completed the task, click th submit button in order to run an automated check.",
           "type": "internal command",
-          "source": "grep 'fi' /home/kali/Desktop/test | wc -w",
-          "output": "3",
+          "source": "echo $(wget 178.143.32.3:80 -q -O -) | grep 'Fake' | wc -l",
+          "output": "1",
           "completed": "false",
           "score": 50,
           "hint": "apache service + www dir"
