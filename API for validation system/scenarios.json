@@ -10,7 +10,7 @@
       "validations": [
         {
           "step": 1,
-          "task": "Zdravim ta, pentester!\n Tvoja prva uloha spociva v oboznameni sa s infrastrukturou, pod ktorou budes pracovat. Prave sa nachadzas v sieti miestnej kaviarne sidliacej pod bankovou spolocnostou, ktora ma svoju webovu stranku pre internych no aj pre externych pouzivatelov/klientov. Domenove meno stranky je www.vbankingweb.com. Pokojne sa na nu mozes pokusit pripojit.\n Tvojou prvou ulohou je preskumat a pochopit sietovu premavku, cez ktoru tvoj request na stranku putuje. Flag pre tuto ulohu je IP adresa autoritativneho DNS servera.",
+          "task": "Hello, Pentester!\n Your first task is to become more familiar with given infrastructure. You are currently in the network of a local cafe located under a fictive banking company, which has its own website for both internal and external users/clients. The domain name of the site is www.vbankingweb.com. You can try to connect to it.\n Your first task is to research and understand the network traffic of your request sent to the site. Can you identify the IP Address of the authoritative DNS server?",
           "type": "flag",
           "source": "10.20.1.4",
           "completed": "false",
@@ -19,7 +19,7 @@
         },
         {
           "step": 2,
-          "task": "VĂ˝borne! Podarilo sa ti uspesne identifikovat autoritativny DNS server.\n Este pred samotnym utokom by si sa mal pripravit. Vdaka tvojim programatorskym a reverznym zrucnostiam sa ti podarilo vytvorit duplikat prihlasovacej stranky spolocnosti. Tvojou ulohou v tomto kroku je nasadit priravenu stranku na apache server, aby k nemu mohla pristupovat aj tretia strana.\n Ak si myslis, ze si ulohu uspesne zvladol, kliknutim na submit tlacidlo spustis automatizovanu kontrolu.",
+          "task": "Great! You were able to successfully identify the authoritative DNS server. \n You should be prepared before the attack itself. Thankts to your programming and reverse skills (ctrl+u :)) you have been able to create a duplication of the original login page. Your task in this step is to deploy the associated page to the apache server so that a third party can access it.\n If you think you that you have successfully completed the task, click th submit button in order to run an automated check.",
           "type": "internal command",
           "source": "grep 'fi' /home/kali/Desktop/test | wc -w",
           "output": "3",
@@ -29,7 +29,7 @@
         },
         {
           "step": 3,
-          "task": "Ked je uz vsetko pripravene, mozeme prejst na samotny utok. Ten je realizovany pomocou skriptu, ktory najdete v priecinku exploit-script. Do tohoto skriptu je potrebne zadat niekolko vstupnych parametrov. Mali by ste nimi disponovat, no ak nahodou nie, viete ich lahko ziskat.\n Po spusteni skriptu by mali byt vsetky dopyty na stranku spolocnosti presmerovane na vasu stranku. V tomto kroku je teda potrebne odchytit meno a heslo pouzivatela, ktoremu sa falosna stranka spolocnosti objavila.",
+          "task": "When everything's ready, we can move on to the attack itself. You can check the script implemented and stored in the exploit-script folder. You need to enter several input parameters. You should already know them, but if not, you can easily approach them. After running the script, all queries to the company page should be redirected to your page. \nCan you now capture the name and password of the user to whom the fake site of the company appeared? Flag is the password.",
           "type": "flag",
           "source": "6epT7GHBj",
           "completed": "false",
@@ -38,7 +38,7 @@
         },
         {
           "step": 4,
-          "task": "Teraz mozete pristupit na stranku spolocnosti a prejst na dalsi scenar.\n Na dokoncenie potvrdte submit tlacitkom.",
+          "task": "You can now access the company page and proceed to the next scenario. \n Congrats and good luck! Submit button to complete the scenario.",
           "type": "none",
           "source": "none",
           "completed": "false",
@@ -55,7 +55,7 @@
       "validations": [
         {
           "step": 1,
-          "task": "Vysledkom predchadzajuceho scenaru by ste mali disponovat novou inormaciou, ktoru mozete pouzit pri pasivnom prieskume. Najdite flag.",
+          "task": "As a result of the previous scenario, you should bear a new information that you can use in the passive reconnaissance. Find the flag.",
           "type": "flag",
           "source": "KgOalY8l06",
           "completed": "false",
@@ -64,7 +64,7 @@
         },
         {
           "step": 2,
-          "task": "Vyborne! Viete tohoto pouzivatela naozaj pingnut?\n Vieme dokonca jeho meno. Vedeli by sme na zaklade toho prist na heslo?",
+          "task": "Great! Can you really ping this internal user's IP? Can you describe what can prevent this?\n Ok, but to this next task - You can now the name the name of the user and deduce his user name. Small hint - make a list of possible user names. Can you somehow guess also the password? The flag is just that!",
           "type": "flag",
           "source": "qwerty",
           "completed": "false",
@@ -73,7 +73,7 @@
         },
         {
           "step": 3,
-          "task": "Vyborne :) PotvrÄŹ pre dokonÄŤenie",
+          "task": "Great! :) As of now you will be performing the other attacks from this computer. Submit to finish the scenario and log in to you new obtained computer.",
           "type": "none",
           "source": "none",
           "completed": "false",
@@ -90,7 +90,7 @@
       "validations": [
         {
           "step": 1,
-          "task": "Dostali ste sa do internej siete spolocnosti a mozete pristupovat k novym koncovym zariadeniam, ktore cez public siet neboli pristupne.\n V prvej - prieskumnej faze mate za ulohu identifikovat FTP servery a ich verzie a mena sluzieb.\n Existuje pre identifikovanu FTP sluzbu nejaka zranitelnost?",
+          "task": "You have reached the company's internal network and now you can access the new endpoints that were not accessible via the public network.\n In the first - reconn phase, you have the task to identifying FTP server that is used by the company and its version and service name. Is there a known vulnerability fot that service? Flag is the CVE name.",
           "type": "flag",
           "source": "CVE-2020-35359",
           "completed": "false",
@@ -99,7 +99,7 @@
         },
         {
           "step": 2,
-          "task": "Spravne ste identifikovali a pomenovali zranitelnost nainstalovanej verzie FTP serveru. Viete tuto zranitelnost zneuzit? \n Ak si myslite, ze ste ulohu uspesne skoncili, kliknite na spustenie automatizovanej validacie.",
+          "task": "You have correctly identified and named the vulnerability of the installed version of the FTP server. Can you somehow exploit it?\n Perform the DoS attack and find out maximal number of logged in users. Submit this number.",
           "type": "flag",
           "source": "50",
           "completed": "false",
@@ -108,7 +108,7 @@
         },
         {
           "step": 3,
-          "task": "Vyborne :)",
+          "task": "Great, thanks for playing :)",
           "type": "none",
           "source": "none",
           "completed": "false",
@@ -125,25 +125,25 @@
       "validations": [
         {
           "step": 1,
-          "task": "IdentifikĂˇcia zraniteÄľnosti - flag je host name domain servera",
+          "task": "In the first - reconn phase, you can scan the second server and the running services. You will find out that it's Domain Controller of the Active Directory.\n Can you also identify the server and domain name? Flag is the servers name.",
           "type": "flag",
           "source": "ADDC",
           "completed": "false",
           "score": 50,
-          "hint": "Google the service version"
+          "hint": "Beside nmap you can use crackmapexec tool"
         },
         {
           "step": 2,
-          "task": "Druhy step je odchytenie hashu pomocou responderu ako sa vola meno pouzivatela",
+          "task": "You may have noticed that the server has SMB signing disabled. That means it is vulnerable and we can try to abuse it.\n Perform SMB Relay attack with responder tool and try to capture some access data.\n What is the name of the user who was trying to access the shared folder?",
           "type": "flag",
           "source": "bob.wood",
           "completed": "false",
           "score": 30,
-          "hint": "use responder on smb, be patiance"
+          "hint": "use responder on your network interface, be patiance"
         },
         {
           "step": 3,
-          "task": "Treti step je pass the hash pomocou hashcat, flag je heslo",
+          "task": "Great! Now that you managed to capture the NTLM hash, do not forget to store it somewhere. This hash is also vulnerable and you can perform pass the hash attack.\n Have you managed to successfully transform the hash into a plain text password? Try to submit it then.",
           "type": "flag",
           "source": "ImHereToSaveYo0!",
           "completed": "false",
@@ -152,30 +152,30 @@
         },
         {
           "step": 4,
-          "task": "Instalacia a pristup na win server pomocou win rm, flag je number of groups",
+          "task": "Now you know the user's name and password. Try to access the server via winrm. When you're there, you can check in which groups your user is located.\n Your user is not the administrator, but the server is most likely the domain controller. How is it possible that you managed to access this server? Which group allows it?",
           "type": "flag",
-          "source": "4!",
+          "source": "Remote Management Users",
           "completed": "false",
           "score": 50,
           "hint": "install and use evil-winrm"
         },
         {
           "step": 5,
-          "task": "User ma heslo v desc. Ake je to heslo?",
+          "task": "You can see that other users are present on the server as well. Can you check them and find some security threats?\n Submit the flag",
           "type": "flag",
           "source": "OmwToChangeTh3World!",
           "completed": "false",
           "score": 50,
-          "hint": "Check the users separatly"
+          "hint": "Check the users fields"
         },
         {
           "step": 5,
-          "task": "Flag admina",
+          "task": "Great! the flag is most likely the password of the user with domain admin permissions! Try to find and access the file with flag.",
           "type": "flag",
-          "source": "SomeShit",
+          "source": "YLFvrW29w3QVWxDnvFu7",
           "completed": "false",
           "score": 20,
-          "hint": "Flag is in Temp folder"
+          "hint": "Flag is in the Temp folder"
         }
       ]
     }
