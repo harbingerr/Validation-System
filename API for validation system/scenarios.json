@@ -5,7 +5,7 @@
     {
       "id": 1,
       "title": "DNS Cache poisoning",
-      "progress": 1,
+      "progress": 0,
       "steps": 4,
       "validations": [
         {
@@ -121,7 +121,7 @@
       "id": 4,
       "title": "SMB Relay",
       "progress": 0,
-      "steps": 3,
+      "steps": 6,
       "validations": [
         {
           "step": 1,
@@ -169,7 +169,7 @@
           "hint": "Check the users fields"
         },
         {
-          "step": 5,
+          "step": 6,
           "task": "Great! the flag is most likely the password of the user with domain admin permissions! Try to find and access the file with flag.",
           "type": "flag",
           "source": "YLFvrW29w3QVWxDnvFu7",

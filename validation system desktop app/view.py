@@ -130,6 +130,7 @@ def generateCards2(self, scenario):
 ## Method to generate task widget
 #########################################
 def generateTasks(self,scenario):
+  calculateCurrent(self, scenario)
   ##HEADER
   ## Init Button and set Titles
   ## Activate Back Button
@@ -149,7 +150,6 @@ def generateTasks(self,scenario):
   disalbeButtons(self,scenario)
   
   # last argument is representing the flag to distinguish which button was pressed
-  self.ui.bt_previous.clicked.connect(lambda: generateTask(self, scenario, -1))
   self.ui.bt_next.clicked.connect(lambda: generateTask(self, scenario, 1))
   generateTask(self, scenario, 0)
 
@@ -159,10 +159,6 @@ def generateTasks(self,scenario):
 def disalbeButtons(self, scenario):
     # Disable previous button on first step and next button on last step
     # Disable next button if the current one is unfinished
-    if(scenario.current == 1):
-        self.ui.bt_previous.setEnabled(False)
-    else:
-        self.ui.bt_previous.setEnabled(True)
     
     validationID = scenario.current - 1
     if(scenario.steps < scenario.current + 1):
@@ -177,6 +173,7 @@ def disalbeButtons(self, scenario):
 #########################################
 def generateTask(self, scenario, bt_clicked):
     task_to_generate = scenario.validations[0]
+    print(scenario.current)
 
     if bt_clicked == 0:
         task_to_generate = scenario.validations[scenario.current - 1]
@@ -185,7 +182,6 @@ def generateTask(self, scenario, bt_clicked):
         scenario.current = task_to_generate.id
         disalbeButtons(self, scenario)
     elif bt_clicked == -1:
-        print("We here")
         task_to_generate = scenario.validations[scenario.current - 2]
         scenario.current = task_to_generate.id
         disalbeButtons(self, scenario)
@@ -252,6 +248,7 @@ def validate(self, validation, listOfObjects, scenario):
     button = listOfObjects[1]
     label = listOfObjects[2]
     
+    label.setText(QCoreApplication.translate("MainWindow", u"", None))
     response = getFlagcheck(self,scenario.id,validation.id,answer.text())
     if(response.status_code == 200):
         jsonResponse = decryptResponse(self,response.json())
@@ -280,7 +277,7 @@ def validateSuccess(self, validation, answer, button, label, scenario):
     
     # update progress bar and validation locally
     #scenario = updateProgressBar(self, scenario)
-    #validation.completed = "true"
+    validation.completed = "true"
     scenario.calculateProgress(scenario.current, scenario.steps)
     updateProgressBar(self, scenario)
     updateScore(self, validation.score)
@@ -291,11 +288,13 @@ def validateSuccess(self, validation, answer, button, label, scenario):
 ## Method to calculate current step
 #########################################
 def calculateCurrent(self,scenario):
+    print(scenario.current)
     stepID = 10000000
     for step in scenario.validations:
         if step.completed == "false" and stepID > step.id:
             stepID = step.id
             scenario.current = step.id
+    print(scenario.current)
 
 def disableUI(self):
     # allow user to proceed to the next step

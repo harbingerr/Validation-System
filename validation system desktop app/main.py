@@ -4,13 +4,10 @@
 from calendar import c
 from functools import cache
 import json
-import string
 import requests
 import sys
 import os
-from turtle import width
 from cryptography.fernet import Fernet
-from PySide2 import *
 from scipy.fftpack import fftfreq
 
 #########################################
@@ -114,7 +111,6 @@ def extractScenarios(self, initData):
 def decryptResponse(self,response): 
     data = response["data"]
     byteResponse = data.encode("utf-8")
-    print(byteResponse)
     f = Fernet(self.key)
     decriptedResponse = f.decrypt(byteResponse)
     jsonResponse = decriptedResponse.decode("utf-8")
@@ -131,19 +127,13 @@ class MainWindow(QMainWindow):
         customUISetup(self)
         key = Fernet.generate_key()
         f = Fernet(key)
-        print(type(key))
-        print(key)
         self.key = key
 
         response = getInfo(self,key)
-        print(response)
         if response != None:
           #decriptedResponse = f.decrypt(byteResponse)
           jsonResponse = decryptResponse(self,response.json())
           jsResponse = json.loads(jsonResponse)
-          print(type(jsonResponse))
-          #response = requests.get("http://192.168.1.106:4999/attacker")
-          #print(response.json())
                 
           global extractedData
           extractedData = extractScenarios(self, jsResponse)

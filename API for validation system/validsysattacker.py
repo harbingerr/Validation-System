@@ -53,6 +53,8 @@ class SystemInit(Resource):
         for scenario in data["scenarios"]:
             for validation in scenario["validations"]:
                 validation.pop("source")
+                if "output" in validation:
+                   validation.pop("output") 
 
         origokey = str.encode(key)
         s = json.dumps(data)
@@ -127,11 +129,12 @@ class FlagValidation2(Resource):
                     if validation["step"] == validationId:
                         output = output.strip()
                         if output == validation["output"]:
-                            changingJson = True
-                            print("Im HERE")
-                            validation["completed"] = 'true'
-                            data["score"] = data["score"] + validation["score"]
-                            scenario["progress"] = scenario["progress"] + 1
+                            if validation["completed"] != 'true':
+                                changingJson = True
+                                print("Im HERE")
+                                validation["completed"] = 'true'
+                                data["score"] = data["score"] + validation["score"]
+                                scenario["progress"] = scenario["progress"] + 1
                             valid = 'True'
                             
         if changingJson:                    
@@ -212,9 +215,11 @@ class FlagValidation(Resource):
                         #check type, return success or script to run
                         if validation["type"]  == "flag":
                             if flag == validation["source"]:
-                                changingJson = True
-                                validation["completed"] = 'true'
-                                scenario["progress"] = scenario["progress"] + 1
+                                if validation["completed"] != 'true':
+                                    changingJson = True
+                                    validation["completed"] = 'true'
+                                    scenario["progress"] = scenario["progress"] + 1
+                                    data["score"] = data["score"] + validation["score"]
                                 valid = 'True'
                         if validation["type"] == "internal command":
                             valid = validation["source"]

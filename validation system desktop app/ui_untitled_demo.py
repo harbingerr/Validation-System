@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'untitled_demoNbOkNl.ui'
+## Form generated from reading UI file 'untitled_demoVsDbOa.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 708)
+        MainWindow.resize(800, 742)
         MainWindow.setStyleSheet(u"*{\n"
 "	border: none\n"
 "}")
@@ -279,7 +279,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 778, 412))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 778, 446))
         self.gridLayout = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout.setObjectName(u"gridLayout")
         self.card = QFrame(self.scrollAreaWidgetContents)
@@ -302,43 +302,6 @@ class Ui_MainWindow(object):
         self.step_header_frame.setObjectName(u"step_header_frame")
         self.horizontalLayout_7 = QHBoxLayout(self.step_header_frame)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.previous_step_frame = QFrame(self.step_header_frame)
-        self.previous_step_frame.setObjectName(u"previous_step_frame")
-        self.previous_step_frame.setCursor(QCursor(Qt.ArrowCursor))
-        self.previous_step_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_8 = QHBoxLayout(self.previous_step_frame)
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.horizontalLayout_8.setContentsMargins(0, 5, 100, 10)
-        self.bt_previous = QPushButton(self.previous_step_frame)
-        self.bt_previous.setObjectName(u"bt_previous")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.bt_previous.sizePolicy().hasHeightForWidth())
-        self.bt_previous.setSizePolicy(sizePolicy4)
-        self.bt_previous.setMinimumSize(QSize(50, 0))
-        self.bt_previous.setMaximumSize(QSize(50, 16777215))
-        self.bt_previous.setCursor(QCursor(Qt.PointingHandCursor))
-        self.bt_previous.setStyleSheet(u"")
-        self.bt_previous.setIcon(icon2)
-        self.bt_previous.setIconSize(QSize(30, 30))
-
-        self.horizontalLayout_8.addWidget(self.bt_previous, 0, Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.lb_previous_step = QLabel(self.previous_step_frame)
-        self.lb_previous_step.setObjectName(u"lb_previous_step")
-        font4 = QFont()
-        font4.setPointSize(9)
-        font4.setBold(False)
-        font4.setWeight(50)
-        self.lb_previous_step.setFont(font4)
-
-        self.horizontalLayout_8.addWidget(self.lb_previous_step, 0, Qt.AlignLeft|Qt.AlignVCenter)
-
-
-        self.horizontalLayout_7.addWidget(self.previous_step_frame)
-
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer)
@@ -350,10 +313,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setContentsMargins(100, 5, -1, 10)
         self.lb_next_step = QLabel(self.next_step_frame)
         self.lb_next_step.setObjectName(u"lb_next_step")
-        font5 = QFont()
-        font5.setPointSize(9)
-        font5.setItalic(False)
-        self.lb_next_step.setFont(font5)
+        font4 = QFont()
+        font4.setPointSize(9)
+        font4.setItalic(False)
+        self.lb_next_step.setFont(font4)
 
         self.horizontalLayout_9.addWidget(self.lb_next_step, 0, Qt.AlignRight|Qt.AlignVCenter)
 
@@ -381,6 +344,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.lb_description = QLabel(self.task_body_frame)
         self.lb_description.setObjectName(u"lb_description")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.lb_description.sizePolicy().hasHeightForWidth())
         self.lb_description.setSizePolicy(sizePolicy4)
         self.lb_description.setMinimumSize(QSize(0, 200))
@@ -403,10 +369,10 @@ class Ui_MainWindow(object):
         self.bt_submit = QPushButton(self.task_submition_frame)
         self.bt_submit.setObjectName(u"bt_submit")
         self.bt_submit.setMinimumSize(QSize(0, 40))
-        font6 = QFont()
-        font6.setBold(True)
-        font6.setWeight(75)
-        self.bt_submit.setFont(font6)
+        font5 = QFont()
+        font5.setBold(True)
+        font5.setWeight(75)
+        self.bt_submit.setFont(font5)
         self.bt_submit.setCursor(QCursor(Qt.PointingHandCursor))
         self.bt_submit.setStyleSheet(u"background-color: rgb(22, 30, 45);\n"
 "color: rgb(255, 255, 255);\n"
@@ -482,9 +448,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.lb_cp = QLabel(self.footer)
         self.lb_cp.setObjectName(u"lb_cp")
-        font7 = QFont()
-        font7.setPointSize(8)
-        self.lb_cp.setFont(font7)
+        font6 = QFont()
+        font6.setPointSize(8)
+        self.lb_cp.setFont(font6)
 
         self.horizontalLayout_4.addWidget(self.lb_cp, 0, Qt.AlignTop)
 
@@ -516,8 +482,6 @@ class Ui_MainWindow(object):
         self.label_2.setText("")
         self.lb_validation_step_in_task_header.setText(QCoreApplication.translate("MainWindow", u"Task XY", None))
         self.score_task_header.setText(QCoreApplication.translate("MainWindow", u"Score: 0", None))
-        self.bt_previous.setText("")
-        self.lb_previous_step.setText(QCoreApplication.translate("MainWindow", u"Previous step", None))
         self.lb_next_step.setText(QCoreApplication.translate("MainWindow", u"Next step", None))
         self.bt_next.setText("")
         self.lb_description.setText(QCoreApplication.translate("MainWindow", u"Task Description", None))
